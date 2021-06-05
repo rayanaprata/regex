@@ -180,15 +180,47 @@ function montaPatternDeDataMaisLegivel() {
   return DIA + _DE_ + MES + _DE_ + ANO;
 }
 
-// O primeiro caractere é um espaço branco.
-// \t é um tab.
-// \r é carriage return.
-// \n é newline.
-// \f é form feed.
+// Âncoras
+// \b - word boundary
+// \B - non word boundary
+// ^ - início do alvo
+// $ - fim do alvo
 
+// Grupos
+// (\w+) - grupo de word chars
+// (\w+)? - grupo opcional
+// (?:\w+) - non-capturing group
+
+// Quantifier
 // ? - zero ou uma vez.
 // * - zero ou mais vezes.
 // + - uma ou mais vezes.
 // {n} - exatamente n vezes.
 // {n,} - no mínimo n vezes.
 // {n,m} - no mínimo n vezes, no máximo m vezes.
+
+//Classes de char - []
+// [A-Z] - letras de A até Z
+// [123] - 1, 2 ou 3
+// \d - todos os dígitos [0-9]
+// \w - wordchar [A-Za-z0-9_]
+
+// \s whitespace [\t\r\n\f]
+// \t é um tab.
+// \r é carriage return.
+// \n é newline.
+// \f é form feed.
+
+// Regex email: ^([\w-]\.?)+@([\w-]+\.)+([A-Za-z]{2,4})+$
+
+// a regex usa âncoras no início ^ e fim $ para garantir o match inteiro;
+
+// antes do @, temos: ^([\w-]\.?)+
+//  - definimos uma classe com word-chars e hífen, seguido por um ponto opcional: [\w-]\.?
+//  - essa classe pode se repetir uma ou mais vezes, então criamos um grupo e + ao final: ([\w-]\.?)+
+
+// depois do @, temos:
+//  - ([\w-]+\.)+, que é bastante parecido com o anterior ao @, porém com o . obrigatório,
+// - ([A-Za-z]{2,4})+$, que é o final da nossa regex, seleciona o domínio do email, como br, com, us. O mínimo de letras dessa parte final devem ser 2 e no máximo 4.
+
+// A autenticidade de um email só pode ser verificada enviando um email para usuário.
