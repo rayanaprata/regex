@@ -224,3 +224,16 @@ function montaPatternDeDataMaisLegivel() {
 // - ([A-Za-z]{2,4})+$, que é o final da nossa regex, seleciona o domínio do email, como br, com, us. O mínimo de letras dessa parte final devem ser 2 e no máximo 4.
 
 // A autenticidade de um email só pode ser verificada enviando um email para usuário.
+
+// -------------------------------------------
+
+// var regex = /(\d\d)(\w)/g; //2 dígitos e 1 word char, dois grupos
+// var resultado = regex.exec('11a22b33c ');COPIAR CÓDIGO
+
+// O resultado possui as informações sobre primeiro match:
+
+// console.log(resultado[0]); //devolve o match inteiro: 11a
+// console.log(resultado[1]); //devolve o primeiro grupo: 11
+// console.log(resultado[2]); //devolve o segundo grupo a
+// console.log(resultado.index); //devolve a posição onde o match começo no alvo: 0
+// console.log(regex.lastIndex); //devolve a última posição do match: 3
